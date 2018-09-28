@@ -20,7 +20,7 @@ from allennlp.data.token_indexers import TokenIndexer, SingleIdTokenIndexer
 from allennlp.data.tokenizers import Token, Tokenizer, WordTokenizer
 from allennlp.data.tokenizers.word_splitter import SpacyWordSplitter
 from allennlp.semparse.contexts import TableQuestionKnowledgeGraph
-from allennlp.semparse.type_declarations import wikitables_type_declaration as wt_types
+from allennlp.semparse.type_declarations import wikitables_lambda_dcs as wt_types
 from allennlp.semparse.worlds import WikiTablesWorld
 from allennlp.semparse.worlds.world import ParsingError
 
@@ -267,7 +267,7 @@ class WikiTablesDatasetReader(DatasetReader):
         tokenized_question = tokenized_question or self._tokenizer.tokenize(question.lower())
         question_field = TextField(tokenized_question, self._question_token_indexers)
         metadata: Dict[str, Any] = {"question_tokens": [x.text for x in tokenized_question]}
-        metadata["original_table"] = "".join(table_lines)
+        metadata["original_table"] = "\n".join(table_lines)
         table_knowledge_graph = TableQuestionKnowledgeGraph.read_from_lines(table_lines, tokenized_question)
         table_metadata = MetadataField(table_lines)
         table_field = KnowledgeGraphField(table_knowledge_graph,
