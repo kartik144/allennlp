@@ -14,6 +14,7 @@ DEFAULT_PREDICTORS = {
         'biaffine_parser': 'biaffine-dependency-parser',
         'bidaf': 'machine-comprehension',
         'bidaf-ensemble': 'machine-comprehension',
+        'bimpm': 'textual-entailment',
         'constituency_parser': 'constituency-parser',
         'coref': 'coreference-resolution',
         'crf_tagger': 'sentence-tagger',
@@ -21,7 +22,9 @@ DEFAULT_PREDICTORS = {
         'dialog_qa': 'dialog_qa',
         'event2mind': 'event2mind',
         'simple_tagger': 'sentence-tagger',
-        'srl': 'semantic-role-labeling'
+        'srl': 'semantic-role-labeling',
+        'quarel_parser': 'quarel-parser',
+        'wikitables_mml_parser': 'wikitables-parser'
 }
 
 class Predictor(Registrable):
